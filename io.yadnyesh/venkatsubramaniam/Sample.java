@@ -6,12 +6,16 @@ import java.util.List;
 public class Sample {
 
     public static int transform(int number){
-        System.out.println("Transform: " + Thread.currentThread());
+        //System.out.println("Transform: " + Thread.currentThread());
         return number;
     }
 
+    public static void println(int number){
+        System.out.println(number);
+    }
+
     public static void main(String[] args) {
-        List<Integer> numbers = Arrays.asList(1,2,3);
+        List<Integer> numbers = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
 
         int result = 0;
         for(int e : numbers){
@@ -27,7 +31,7 @@ public class Sample {
             numbers.stream()
                 .parallel()
                 .map(Sample::transform)
-                .forEach(System.out::println);
+                .forEachOrdered(Sample::);
     }
 
 }
