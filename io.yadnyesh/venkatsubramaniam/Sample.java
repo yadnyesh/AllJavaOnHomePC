@@ -31,7 +31,7 @@ public class Sample {
             numbers.stream()
                 .parallel()
                 .map(Sample::transform)
-                .forEachOrdered(Sample::);
+                .forEachOrdered(Sample::println);
     }
 
 }
