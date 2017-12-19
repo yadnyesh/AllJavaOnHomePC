@@ -18,7 +18,7 @@ public class Sample {
 
         //Collection Pipeline pattern - Martin Fowler
         System.out.println(
-            numbers.stream()
+            numbers.parallelStream()
                 .filter(e -> e % 2 ==0)
                 .mapToInt(e -> e * 2)
                 .sum()
