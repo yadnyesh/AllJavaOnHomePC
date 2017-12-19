@@ -16,6 +16,7 @@ public class Sample {
         }
         System.out.println(result);
 
+        //Collection Pipeline pattern - Martin Fowler
         System.out.println(
             numbers.stream()
                 .filter(e -> e % 2 ==0)
