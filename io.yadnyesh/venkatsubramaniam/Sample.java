@@ -5,8 +5,12 @@ import java.util.List;
 
 public class Sample {
 
+    public static int transform(int number){
+        return number;
+    }
+
     public static void main(String[] args) {
-        List<Integer> numbers = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+        List<Integer> numbers = Arrays.asList(1,2,3);
 
         int result = 0;
         for(int e : numbers){
@@ -17,12 +21,9 @@ public class Sample {
         System.out.println(result);
 
         //Collection Pipeline pattern - Martin Fowler
-        System.out.println(
-            numbers.parallelStream()
-                .filter(e -> e % 2 ==0)
-                .mapToInt(e -> e * 2)
-                .sum()
-        );
+            numbers.stream()
+                .map(Sample::transform)
+                .forEach(System.out::println);
     }
 
 }
