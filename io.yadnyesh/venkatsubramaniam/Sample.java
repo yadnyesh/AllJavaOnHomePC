@@ -6,6 +6,7 @@ import java.util.List;
 public class Sample {
 
     public static int transform(int number){
+        System.out.println("Transform: " + Thread.currentThread());
         return number;
     }
 
@@ -23,7 +24,8 @@ public class Sample {
         //Collection Pipeline pattern - Martin Fowler
         //If you are the source of the stream use parallelStream
         //use stream().parallel() if you are not the source/author/creator of the stream
-            numbers.parallelStream()
+            numbers.stream()
+                .parallel()
                 .map(Sample::transform)
                 .forEach(System.out::println);
     }
