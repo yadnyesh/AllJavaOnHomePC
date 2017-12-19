@@ -14,6 +14,14 @@ public class Sample {
                 result += e * 2;
             }
         }
+        System.out.println(result);
+
+        System.out.println(
+            numbers.stream()
+                .filter(e -> e % 2 ==0)
+                .mapToInt(e -> e * 2)
+                .sum()
+        );
     }
 
 }
