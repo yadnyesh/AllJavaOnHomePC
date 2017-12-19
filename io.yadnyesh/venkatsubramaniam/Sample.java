@@ -18,10 +18,12 @@ public class Sample {
                 result += e * 2;
             }
         }
-        System.out.println(result);
+        //System.out.println(result);
 
         //Collection Pipeline pattern - Martin Fowler
-            numbers.stream()
+        //If you are the source of the stream use parallelStream
+        //use stream().parallel() if you are not the source/author/creator of the stream
+            numbers.parallelStream()
                 .map(Sample::transform)
                 .forEach(System.out::println);
     }
