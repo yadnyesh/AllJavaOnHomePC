@@ -10,8 +10,9 @@ public class Sample {
         return number;
     }
 
-    public static void println(int number){
+    public static void printIt(int number){
         System.out.println(number);
+        System.out.println("Thread ..." + Thread.currentThread());
     }
 
     public static void main(String[] args) {
@@ -31,7 +32,7 @@ public class Sample {
             numbers.stream()
                 .parallel()
                 .map(Sample::transform)
-                .forEachOrdered(Sample::println);
+                .forEachOrdered(Sample::printIt);
     }
 
 }
