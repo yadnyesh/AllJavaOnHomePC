@@ -6,7 +6,12 @@ import java.util.List;
 public class Sample {
 
     public static int transform(int number){
-        //System.out.println("Transform: " + Thread.currentThread());
+        System.out.println("Transform: " + number + " > " + Thread.currentThread());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return number;
     }
 
