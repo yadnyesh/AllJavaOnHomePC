@@ -30,6 +30,13 @@ public class Sample {
         System.out.println("Thread ..." + Thread.currentThread());
     }
 
+    private static int add(int total, int e){
+        int result = total + e;
+        System.out.println("Total: " + total + "  Element: " + e + "   Result: " + result);
+        return result;
+
+    }
+
     public static void main(String[] args) {
         List<Integer> numbers = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
 
@@ -41,14 +48,20 @@ public class Sample {
         }
         //System.out.println(result);
 
+        System.out.println(
+            numbers.stream()
+                    //.reduce(0,(total, e) -> add(total, e)));
+                .reduce(0, Sample::add));
+
+
         //Collection Pipeline pattern - Martin Fowler
         //If you are the source of the stream use parallelStream
         //use stream().parallel() if you are not the source/author/creator of the stream
-            numbers.stream()
-                .parallel()
-                .filter(Sample::check)
-                //.map(Sample::transform)
-                .forEachOrdered(Sample::printIt);
+//            numbers.stream()
+//                .parallel()
+//                .filter(Sample::check)
+//                //.map(Sample::transform)
+//                .forEachOrdered(Sample::printIt);
     }
 
 }
