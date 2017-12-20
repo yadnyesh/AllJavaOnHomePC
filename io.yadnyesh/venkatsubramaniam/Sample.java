@@ -15,7 +15,17 @@ public class Sample {
         return number;
     }
 
-    public static void printIt(int number){
+    private static boolean check(int number){
+        System.out.println("Check: " + number + " > " + Thread.currentThread());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+
+    private static void printIt(int number){
         System.out.println(number);
         System.out.println("Thread ..." + Thread.currentThread());
     }
@@ -36,7 +46,8 @@ public class Sample {
         //use stream().parallel() if you are not the source/author/creator of the stream
             numbers.stream()
                 .parallel()
-                .map(Sample::transform)
+                .filter(Sample::check)
+                //.map(Sample::transform)
                 .forEachOrdered(Sample::printIt);
     }
 
